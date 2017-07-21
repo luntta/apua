@@ -1,6 +1,6 @@
 /*!
  * --------------------------------------------------------------------------
- * Name: Logify (v1.0)
+ * Name: LogifyJS (v1.0)
  * Authors: Raine Luntta (http://isopaha.fi)
  * URL: https://github.com/raineluntta/LogifyJS
  * License: MIT (https://github.com/raineluntta/LogifyJS/blob/master/LICENSE)
@@ -33,58 +33,57 @@ function Logify() {
 		todo: 2,
 		log: 1
 	};
-	const loglevel = this.getLogLevel();
 
 	this.log = function() {
-		if (this.getDevMode() && loglevel <= loglevels.log) {
+		if (this.getDevMode() && this.getLogLevel() <= loglevels.log) {
 			Array.prototype.unshift.call(arguments, "LOG");
 			console.log.apply(console, arguments);
 		}
 	}
 
 	this.todo = function() {
-		if (this.getDevMode() && loglevel <= loglevels.todo) {
+		if (this.getDevMode() && this.getLogLevel() <= loglevels.todo) {
 			Array.prototype.unshift.call(arguments, "TODO");
 			console.log.apply(console, arguments);
 		}
 	}
 
 	this.security = function() {
-		if (this.getDevMode() && loglevel <= loglevels.security) {
+		if (this.getDevMode() && this.getLogLevel() <= loglevels.security) {
 			Array.prototype.unshift.call(arguments, "SECURITY");
 			console.warn.apply(console, arguments);
 		}
 	}
 
 	this.warn = function() {
-		if (this.getDevMode() && loglevel <= loglevels.warn) {
+		if (this.getDevMode() && this.getLogLevel() <= loglevels.warn) {
 			Array.prototype.unshift.call(arguments, "WARNING");
 			console.warn.apply(console, arguments);
 		}
 	}
 
 	this.error = function() {
-		if (this.getDevMode() && loglevel <= loglevels.error) {
+		if (this.getDevMode() && this.getLogLevel() <= loglevels.error) {
 			Array.prototype.unshift.call(arguments, "ERROR");
 			console.error.apply(console, arguments);
 		}
 	}
 
 	this.bug = function() {
-		if (this.getDevMode() && loglevel <= loglevels.bug) {
+		if (this.getDevMode() && this.getLogLevel() <= loglevels.bug) {
 			Array.prototype.unshift.call(arguments, "BUG");
 			console.error.apply(console, arguments);
 		}
 	}
 
 	this.fatal = function() {
-		if (this.getDevMode() && loglevel <= loglevels.fatal) {
+		if (this.getDevMode() && this.getLogLevel() <= loglevels.fatal) {
 			Array.prototype.unshift.call(arguments, "FATAL");
 			console.error.apply(console, arguments);
 		}
 	}
 	this.assert = function() {
-		if (this.getDevMode() && loglevel <= loglevels.assert) {
+		if (this.getDevMode()) {
 			console.assert.apply(console, arguments);
 		}
 	}
