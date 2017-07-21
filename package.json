@@ -1,0 +1,24 @@
+{
+	"name": "LogifyJS",
+	"version": "0.1.0",
+	"description": "Make client side debugging a bit easier and don't worry about showing debugs in production.",
+	"main": "logify.js",
+	"scripts": {
+		"test": "logify"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/raineluntta/LogifyJS.git"
+	},
+	"keywords": [
+		"helper functions",
+		"helpers",
+		"class"
+	],
+	"author": "Raine Luntta",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/raineluntta/LogifyJS/issues"
+	},
+	"homepage": "https://github.com/raineluntta/LogifyJS#readme"
+}
