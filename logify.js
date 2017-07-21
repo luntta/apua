@@ -8,12 +8,14 @@
  */
 
 function Logify() {
-	this.setDevMode = function(boolean) {
-		localStorage.setItem("DevMode", boolean);
-	}
-
-	this.getDevMode = function() {
-		return JSON.parse(localStorage.getItem("DevMode")) || false;
+	this.DevMode = function(flag) {
+		if (flag == null) {
+			return JSON.parse(localStorage.getItem("DevMode")) || false;
+		} else if (typeof flag === 'boolean') {
+			localStorage.setItem("DevMode", flag);
+		} else {
+			this.error("DevMode-function only accepts boolean values");
+		}
 	}
 
 	this.setLogLevel = function(level) {
@@ -35,55 +37,55 @@ function Logify() {
 	};
 
 	this.log = function() {
-		if (this.getDevMode() && this.getLogLevel() <= loglevels.log) {
+		if (this.DevMode() && this.getLogLevel() <= loglevels.log) {
 			Array.prototype.unshift.call(arguments, "LOG");
 			console.log.apply(console, arguments);
 		}
 	}
 
 	this.todo = function() {
-		if (this.getDevMode() && this.getLogLevel() <= loglevels.todo) {
+		if (this.DevMode() && this.getLogLevel() <= loglevels.todo) {
 			Array.prototype.unshift.call(arguments, "TODO");
 			console.log.apply(console, arguments);
 		}
 	}
 
 	this.security = function() {
-		if (this.getDevMode() && this.getLogLevel() <= loglevels.security) {
+		if (this.DevMode() && this.getLogLevel() <= loglevels.security) {
 			Array.prototype.unshift.call(arguments, "SECURITY");
 			console.warn.apply(console, arguments);
 		}
 	}
 
 	this.warn = function() {
-		if (this.getDevMode() && this.getLogLevel() <= loglevels.warn) {
+		if (this.DevMode() && this.getLogLevel() <= loglevels.warn) {
 			Array.prototype.unshift.call(arguments, "WARNING");
 			console.warn.apply(console, arguments);
 		}
 	}
 
 	this.error = function() {
-		if (this.getDevMode() && this.getLogLevel() <= loglevels.error) {
+		if (this.DevMode() && this.getLogLevel() <= loglevels.error) {
 			Array.prototype.unshift.call(arguments, "ERROR");
 			console.error.apply(console, arguments);
 		}
 	}
 
 	this.bug = function() {
-		if (this.getDevMode() && this.getLogLevel() <= loglevels.bug) {
+		if (this.DevMode() && this.getLogLevel() <= loglevels.bug) {
 			Array.prototype.unshift.call(arguments, "BUG");
 			console.error.apply(console, arguments);
 		}
 	}
 
 	this.fatal = function() {
-		if (this.getDevMode() && this.getLogLevel() <= loglevels.fatal) {
+		if (this.DevMode() && this.getLogLevel() <= loglevels.fatal) {
 			Array.prototype.unshift.call(arguments, "FATAL");
 			console.error.apply(console, arguments);
 		}
 	}
 	this.assert = function() {
-		if (this.getDevMode()) {
+		if (this.DevMode()) {
 			console.assert.apply(console, arguments);
 		}
 	}
