@@ -8,7 +8,6 @@
  */
 
 function Logify(options) {
-	console.log("this",this);
 	this.extend = function logifyExtend(params) {
 		params = params || {};
 		for (var i = 1; i < arguments.length; i++) {
