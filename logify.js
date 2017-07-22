@@ -53,27 +53,27 @@ function Logify(options) {
 			if (typeof logLevels[key] === 'number') {
 				continue;
 			} else {
-				throw "LogifyJS: logLevels needs to be numbers. You tried: " + key + ": " + logLevels[key];
+				throw "logLevels needs to be numbers. You tried: " + key + ": " + logLevels[key];
 			}
 		}
 
-		this.devMode = function (flag) {
+		this.devMode = function devMode (flag) {
 			if (flag == null) {
 				return this.settings.devMode;
 			} else if (typeof flag === 'boolean') {
 				this.settings.devMode = Boolean(flag);
 			} else {
-				throw "LogifyJS: devMode accepts boolean values only. You tried: " + this.settings.devMode;
+				throw "devMode value needs to be a boolean. You tried: " + this.settings.devMode;
 			}
 		}
 
-		this.logLevel = function (level) {
+		this.logLevel = function logLevel (level) {
 			if (level == null) {
 				return this.settings.logLevel;
 			} else if (typeof level === 'number') {
 				this.settings.logLevel = Number(level);
 			} else {
-				throw "LogifyJS: logLevel accepts only number values. You tried: " + this.settings.logLevel;
+				throw "logLevel values need to be numbers. You tried: " + this.settings.logLevel;
 			}
 		}
 
@@ -142,7 +142,7 @@ function Logify(options) {
 		this.devMode(this.settings.devMode);
 		this.logLevel(this.settings.logLevel);
 	} catch (e) {
-		console.error(e,this.options);
+		console.error("LogifyJS ERROR:",e,this.options);
 	}
 }
 
