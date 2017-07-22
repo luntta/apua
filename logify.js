@@ -47,7 +47,7 @@ function Logify(options) {
 	this.settings = this.extend({}, this.defaults, this.options);
 
 	this.devMode = function devMode(flag) {
-		if (flag == null) {
+		if (flag == undefined) {
 			return this.settings.devMode;
 		} else if (typeof flag === 'boolean') {
 			this.settings.devMode = Boolean(flag);
@@ -58,7 +58,7 @@ function Logify(options) {
 	}
 
 	this.logLevel = function logLevel(level) {
-		if (level == null) {
+		if (level == undefined) {
 			return this.settings.logLevel;
 		} else if (typeof level === 'number') {
 			this.settings.logLevel = Number(level);
