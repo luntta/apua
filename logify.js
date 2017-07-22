@@ -8,7 +8,7 @@
  */
 
 function Logify(options) {
-	try {
+	
 		this.extend = function logifyExtend(params) {
 			params = params || {};
 			for (var i = 1; i < arguments.length; i++) {
@@ -32,18 +32,30 @@ function Logify(options) {
 		this.defaults = {
 			devMode: true,
 			logLevel: 1,
-			fatal: 7,
-			bug: 6,
-			error: 5,
-			warn: 4,
-			security: 3,
-			todo: 2,
-			log: 1
+			logLevels: {
+				fatal: 7,
+				bug: 6,
+				error: 5,
+				warn: 4,
+				security: 3,
+				todo: 2,
+				log: 1
+			}
 		}
 
 		this.options = options;
 
-		this.settings = this.extend({}, this.defaults, options);
+		this.settings = this.extend({}, this.defaults, this.options);
+
+		var logLevels = this.settings.logLevels;
+
+		for (var key in logLevels) {
+			if (typeof logLevels[key] === 'number') {
+				continue;
+			} else {
+				throw "LogifyJS: logLevels needs to be numbers. You tried: " + key + ": " + logLevels[key];
+			}
+		}
 
 		this.devMode = function (flag) {
 			if (flag == null) {
@@ -54,7 +66,6 @@ function Logify(options) {
 				throw "LogifyJS: devMode accepts boolean values only. You tried: " + this.settings.devMode;
 			}
 		}
-		this.devMode(this.settings.devMode);
 
 		this.logLevel = function (level) {
 			if (level == null) {
@@ -65,52 +76,51 @@ function Logify(options) {
 				throw "LogifyJS: logLevel accepts only number values. You tried: " + this.settings.logLevel;
 			}
 		}
-		this.logLevel(this.settings.logLevel);
 
 		this.log = function logifyLog() {
-			if (this.logLevel() <= this.settings.log) {
+			if (this.logLevel() <= this.settings.logLevels.log) {
 				Array.prototype.unshift.call(arguments, "LOG");
 				console.log.apply(console, arguments);
 			}
 		}
 
 		this.todo = function logifyTodo() {
-			if (this.logLevel() <= this.settings.todo) {
+			if (this.logLevel() <= this.settings.logLevels.todo) {
 				Array.prototype.unshift.call(arguments, "TODO");
 				console.log.apply(console, arguments);
 			}
 		}
 
 		this.security = function logifySecurity() {
-			if (this.logLevel() <= this.settings.security) {
+			if (this.logLevel() <= this.settings.logLevels.security) {
 				Array.prototype.unshift.call(arguments, "SECURITY");
 				console.warn.apply(console, arguments);
 			}
 		}
 
 		this.warn = function logifyWarn() {
-			if (this.logLevel() <= this.settings.warn) {
+			if (this.logLevel() <= this.settings.logLevels.warn) {
 				Array.prototype.unshift.call(arguments, "WARNING");
 				console.warn.apply(console, arguments);
 			}
 		}
 
 		this.error = function logifyError() {
-			if (this.logLevel() <= this.settings.error) {
+			if (this.logLevel() <= this.settings.logLevels.error) {
 				Array.prototype.unshift.call(arguments, "ERROR");
 				console.error.apply(console, arguments);
 			}
 		}
 
 		this.bug = function logifyBug() {
-			if (this.logLevel() <= this.settings.bug) {
+			if (this.logLevel() <= this.settings.logLevels.bug) {
 				Array.prototype.unshift.call(arguments, "BUG");
 				console.error.apply(console, arguments);
 			}
 		}
 
 		this.fatal = function logifyFatal() {
-			if (this.logLevel() <= this.settings.fatal) {
+			if (this.logLevel() <= this.settings.logLevels.fatal) {
 				Array.prototype.unshift.call(arguments, "FATAL");
 				console.error.apply(console, arguments);
 			}
@@ -128,6 +138,9 @@ function Logify(options) {
 				}
 			}
 		}
+	try {
+		this.devMode(this.settings.devMode);
+		this.logLevel(this.settings.logLevel);
 	} catch (e) {
 		console.error(e,this.options);
 	}
