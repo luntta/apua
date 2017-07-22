@@ -8,7 +8,6 @@
  */
 
 function Logify(options) {
-	
 		this.extend = function logifyExtend(params) {
 			params = params || {};
 			for (var i = 1; i < arguments.length; i++) {
@@ -47,23 +46,14 @@ function Logify(options) {
 
 		this.settings = this.extend({}, this.defaults, this.options);
 
-		var logLevels = this.settings.logLevels;
-
-		for (var key in logLevels) {
-			if (typeof logLevels[key] === 'number') {
-				continue;
-			} else {
-				throw "logLevels needs to be numbers. You tried: " + key + ": " + logLevels[key];
-			}
-		}
-
 		this.devMode = function devMode (flag) {
 			if (flag == null) {
 				return this.settings.devMode;
 			} else if (typeof flag === 'boolean') {
 				this.settings.devMode = Boolean(flag);
 			} else {
-				throw "devMode value needs to be a boolean. You tried: " + this.settings.devMode;
+				this.error("devMode value needs to be a boolean. You tried: " + this.settings.devMode);
+				this.settings.devMode = this.defaults.devMode;
 			}
 		}
 
@@ -73,7 +63,8 @@ function Logify(options) {
 			} else if (typeof level === 'number') {
 				this.settings.logLevel = Number(level);
 			} else {
-				throw "logLevel values need to be numbers. You tried: " + this.settings.logLevel;
+				this.error("logLevel values need to be numbers. You tried: " + this.settings.logLevel);
+				this.settings.logLevel = this.defaults.logLevel;
 			}
 		}
 
@@ -141,6 +132,17 @@ function Logify(options) {
 	try {
 		this.devMode(this.settings.devMode);
 		this.logLevel(this.settings.logLevel);
+
+		var logLevels = this.settings.logLevels;
+
+		for (var key in logLevels) {
+			if (typeof logLevels[key] === 'number') {
+				continue;
+			} else {
+				this.error("logLevels needs to be numbers. You tried: " + key + ": " + logLevels[key]);
+				logLevels[key] = this.defaults.logLevels[key];
+			}
+		}
 	} catch (e) {
 		console.error("LogifyJS ERROR:",e,this.options);
 	}
