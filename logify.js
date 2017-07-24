@@ -1,9 +1,9 @@
 /*!
  * --------------------------------------------------------------------------
- * Name: LogifyJS (v1.0)
+ * Name: Logify (v1.0)
  * Authors: Raine Luntta (https://github.com/raineluntta)
- * URL: https://github.com/raineluntta/LogifyJS
- * License: MIT (https://github.com/raineluntta/LogifyJS/blob/master/LICENSE)
+ * URL: https://github.com/raineluntta/logify
+ * License: MIT (https://github.com/raineluntta/logify/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
 
