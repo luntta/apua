@@ -1,14 +1,14 @@
 {
-	"name": "Logify",
+	"name": "Apua",
 	"version": "0.1.0",
 	"description": "Make client side debugging a bit easier and don't worry about showing debugs in production.",
-	"main": "logify.js",
+	"main": "apua.js",
 	"scripts": {
-		"test": "logify"
+		"test": "apua"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/raineluntta/logify.git"
+		"url": "git+https://github.com/raineluntta/apua.git"
 	},
 	"keywords": [
 		"helper functions",
@@ -18,7 +18,7 @@
 	"author": "Raine Luntta",
 	"license": "MIT",
 	"bugs": {
-		"url": "https://github.com/raineluntta/logify/issues"
+		"url": "https://github.com/raineluntta/apua/issues"
 	},
-	"homepage": "https://github.com/raineluntta/logify#readme"
+	"homepage": "https://github.com/raineluntta/apua#readme"
 }
