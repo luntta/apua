@@ -1,5 +1,5 @@
 {
-  "name": "Apua",
+  "name": "apua",
   "description": "Useful helper functions to make developing web apps a bit easier.",
   "main": "apua.js",
   "authors": [
