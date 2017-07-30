@@ -1,0 +1,21 @@
+{
+  "name": "Apua",
+  "description": "Useful helper functions to make developing web apps a bit easier.",
+  "main": "apua.js",
+  "authors": [
+    "Raine Luntta"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "helper functions",
+    "helpers"
+  ],
+  "homepage": "https://github.com/raineluntta/apua",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
