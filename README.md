@@ -2,7 +2,7 @@
 Useful helper functions to make developing web apps a bit easier. Includes logging tools (with log levels, so don't worry about them showing in prod environment) and much more!
 
 ## Usage
-Place the `apua.js` in your document's `<head>` tag before any other script files, that use *apuaJS*.
+Place the `apua.js` in your document's `<head>` tag or just before the ending `</body>` tag before any other script files, that use *apuaJS*.
 ```HTML
 <script type="text/javascript" src="/path/to/apua.js"></script>
 ```
