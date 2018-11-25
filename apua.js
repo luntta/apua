@@ -1,9 +1,9 @@
 /*!
  * --------------------------------------------------------------------------
  * Name: Apua (v1.0)
- * Authors: Raine Luntta (https://github.com/raineluntta)
- * URL: https://github.com/raineluntta/apua
- * License: MIT (https://github.com/raineluntta/apua/blob/master/LICENSE)
+ * Authors: Raine Luntta (https://github.com/luntta)
+ * URL: https://github.com/luntta/apua
+ * License: MIT (https://github.com/luntta/apua/blob/master/LICENSE)
  * --------------------------------------------------------------------------
  */
 
